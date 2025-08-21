@@ -1,10 +1,3 @@
---                                                                  MAJOR AND MINOR PROJECT ON
---                                                                      CAR RENTAL SYSTEM
---                                                       SUBMITTED BY:
---                                                                     EVA SHARMA (12408153), roll no. 13
---                                                                     KUNDAN SINGH (12400845), roll no. 03
-
-
 
 CREATE DATABASE CAR_RENTAL
 USE CAR_RENTAL
@@ -393,7 +386,7 @@ WHERE DriverID = (
     SELECT TOP 1 DriverID
     FROM FEEDBACK
     GROUP BY DriverID
-    ORDER BY AVG(Rating) DESC
+    ORDER BY AVG(Rating)Â DESC
 );
 
 
@@ -411,7 +404,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'No payment has been made for this rental.';
+    PRINT 'No payment has been made for thisÂ rental.';
 END;
 
 ------ Check if the customer has multiple rentals
@@ -428,7 +421,7 @@ BEGIN
 END
 ELSE
 BEGIN
-    PRINT 'The customer is a first-time renter.';
+    PRINT 'The customer is a first-timeÂ renter.';
 END;
 
 
@@ -454,10 +447,10 @@ BEGIN
 END
 
 --executing the above stored procedure
-EXEC LogMaintenance1 @MaintenanceID=1014, @CarID = 109, @MaintenanceDate = '2024-11-20', @Cost = 200.00;
-EXEC LogMaintenance1 @MaintenanceID=1013, @CarID = 101, @MaintenanceDate = '2024-11-20', @Cost = 200.00;
+EXEC LogMaintenance1 @MaintenanceID=1014, @CarID = 109, @MaintenanceDate = '2024-11-20',Â @CostÂ =Â 200.00;
+EXEC LogMaintenance1 @MaintenanceID=1013, @CarID = 101, @MaintenanceDate = '2024-11-20',Â @CostÂ =Â 200.00;
 --executing to get output "car does not exist"
-EXEC LogMaintenance1 @MaintenanceID=1013, @CarID = 111, @MaintenanceDate = '2024-11-20', @Cost = 200.00;
+EXEC LogMaintenance1 @MaintenanceID=1013, @CarID = 111, @MaintenanceDate = '2024-11-20',Â @CostÂ =Â 200.00;
 
 
 --THIS PROCEDURE RETRIEVES RENTAL DETAILS FOR A SPECIFIC RENTAL ID
@@ -489,13 +482,13 @@ BEGIN
     JOIN DRIVER d ON r.DriverID = d.DriverID
     JOIN RENTAL_CAR rc ON r.RentalID = rc.RentalID
     JOIN CARS cars ON rc.CarID = cars.CarID
-    WHERE r.RentalID = @RentalID;
+    WHERE r.RentalID =Â @RentalID;
 END
 
 --executing the above stored procedure to get error message
-EXEC GetRentalDetails @RentalID = 1;
+EXEC GetRentalDetails @RentalIDÂ =Â 1;
 --executing the above stored procedure successfully
-EXEC GetRentalDetails @RentalID = 1002;
+EXEC GetRentalDetails @RentalIDÂ =Â 1002;
 
 
 --CREATING FUNCTIONS
@@ -527,7 +520,7 @@ BEGIN
     FROM CUSTOMER_CONTACT
     WHERE CustomerID = @CustomerID;
 
-    RETURN ISNULL(@ContactDetails, 'No contact details found');
+    RETURN ISNULL(@ContactDetails, 'No contact detailsÂ found');
 END
 
 --executing above function
@@ -561,7 +554,7 @@ BEGIN
 END;
 
 CLOSE FeedbackCursor;
-DEALLOCATE FeedbackCursor;
+DEALLOCATEÂ FeedbackCursor;
 
 
 --CURSOR TO LIST ALL PAYMENTS SHOWING THE PAYMENTID, AMOUNT AND METHOD TYPE
@@ -587,7 +580,7 @@ BEGIN
 END;
 
 CLOSE PaymentCursor;
-DEALLOCATE PaymentCursor;
+DEALLOCATEÂ PaymentCursor;
 
 
 
@@ -629,10 +622,10 @@ INSERT INTO CUSTOMER (CustomerID, FirstName, LastName, Email) VALUES
 
 UPDATE CUSTOMER
 SET Email = 'john.doe@newmail.com'
-WHERE CustomerID = 1;
+WHERE CustomerIDÂ =Â 1;
 
 DELETE FROM CUSTOMER
-WHERE CustomerID = 1;
+WHERE CustomerIDÂ =Â 1;
 
 select * from CustomerLog
 
@@ -708,5 +701,6 @@ BEGIN CATCH
     PRINT 'An error occurred. Transaction rolled back.';
     ROLLBACK;
 END CATCH;
+
 
 
